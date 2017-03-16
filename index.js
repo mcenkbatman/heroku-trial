@@ -14,8 +14,17 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/cool', function(request,response){
+app.get('/cool', function(request, response){
 	response.send(cool());
+});
+
+app.get('/times', function(request, response){
+	var result = ''
+	var times = process.env.TIMES || 5
+	for (i=0; i < times; i++)
+		result += i + ' ';
+	response.send(result);
+	
 });
 
 app.listen(app.get('port'), function() {
